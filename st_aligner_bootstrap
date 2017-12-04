@@ -86,7 +86,7 @@ Version 1.0
 
 	echo "Installing tissue recognition library"
 	cd /github_dl
-	git clone https://github.com/SpatialTranscriptomicsResearch/tissue_recognition
+	git clone https://github.com/SpatialTranscriptomicsResearch/st_tissue_recognition
 	cd tissue_recognition
 	mkdir -p build
 	cd build
@@ -102,7 +102,7 @@ Version 1.0
 
 	echo "Installing st_aligner"
 	cd /github_dl
-	git clone https://github.com/SpatialTranscriptomicsResearch/st_aligner.git
+	git clone https://github.com/SpatialTranscriptomicsResearch/st_spot_detector.git
 	cd st_aligner
 	pip install -r server/requirements.txt
 	pip install virtualenv
@@ -134,12 +134,6 @@ Version 1.0
 	cp /github_dl/opencv-3.2.0/build/lib/libopencv_imgproc.so.3.2 /home/st_aligner/server
 	mkdir -p /home/st_aligner/server/logs
 	ln -s /home/st_aligner/client /home/st_aligner/server/client
-
-	#-------------------------------
-	#Add coordinate adjusting script
-	#-------------------------------
-	cd /home/st_aligner
-	wget https://rawgit.com/Alexander-Stuckey/st_pipeline/master/scripts/adjust_matrix_coordinates.py
 		
 	#----------------------------
 	#Edit scripts to work locally
