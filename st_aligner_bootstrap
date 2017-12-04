@@ -62,7 +62,7 @@ Version 1.0
 	#Make home folder
 	#----------------
 
-	mkdir -p /home/st_aligner
+	mkdir -p /home/st_spot_detector
 
 	#--------------
 	#Install opencv
@@ -100,23 +100,23 @@ Version 1.0
 	#Install st aligner
 	#------------------
 
-	echo "Installing st_aligner"
+	echo "Installing st_spot_detector"
 	cd /github_dl
 	git clone https://github.com/SpatialTranscriptomicsResearch/st_spot_detector.git
 	cd st_spot_detector
 	pip install -r server/requirements.txt
 	pip install virtualenv
-	virtualenv /home/st_aligner/venv
-	. /home/st_aligner/venv/bin/activate
+	virtualenv /home/st_spot_detector/venv
+	. /home/st_spot_detector/venv/bin/activate
 	pip install -r server/requirements.txt
-	sed -i '/chdir/c\chdir = /home/st_aligner/server' /github_dl/st_aligner/server/uwsgi-server-config.ini
-	sed -i '/logto/c\logto = /home/st_aligner/server/logs/%n.log' /github_dl/st_aligner/server/uwsgi-server-config.ini
-	sed -i '/plugin/c\plugin = /usr/lib/uwsgi/plugins/python_plugin.so' /github_dl/st_aligner/server/uwsgi-server-config.ini
-	sed -i '/virtualenv/c\virtualenv = /home/st_aligner/venv' /github_dl/st_aligner/server/uwsgi-server-config.ini
-	sed -i '/static-map/c\static-map = /=/home/st_aligner/client' /github_dl/st_aligner/server/uwsgi-server-config.ini
+	sed -i '/chdir/c\chdir = /home/st_spot_detector/server' /github_dl/st_spot_detector/server/uwsgi-server-config.ini
+	sed -i '/logto/c\logto = /home/st_spot_detector/server/logs/%n.log' /github_dl/st_spot_detector/server/uwsgi-server-config.ini
+	sed -i '/plugin/c\plugin = /usr/lib/uwsgi/plugins/python_plugin.so' /github_dl/st_spot_detector/server/uwsgi-server-config.ini
+	sed -i '/virtualenv/c\virtualenv = /home/st_spot_detector/venv' /github_dl/st_spot_detector/server/uwsgi-server-config.ini
+	sed -i '/static-map/c\static-map = /=/home/st_spot_detector/client' /github_dl/st_spot_detector/server/uwsgi-server-config.ini
 	sudo cp server/uwsgi-server-config.ini /etc/uwsgi/apps-available/
 	sudo ln -s /etc/uwsgi/apps-available/uwsgi-server-config.ini /etc/uwsgi/apps-enabled/uwsgi-server-config.ini
-	cd /github_dl/st_aligner/client
+	cd /github_dl/st_spot_detector/client
 	npm install
 	ln -s /usr/bin/nodejs /usr/bin/node
 	make DEVEL=1
@@ -125,27 +125,27 @@ Version 1.0
 	#Set up folders to run st_aligner
 	#--------------------------------
 
-	cp -R /github_dl/st_aligner/server /home/st_aligner/server
-	cp -R /github_dl/st_aligner/client /home/st_aligner/client
-	mv /home/st_aligner/server/utils.py /home/st_aligner/server/utility.py
-	cp -R /github_dl/tissue_recognition/python-module/tissue_recognition/*.py /home/st_aligner/server
-	cp /github_dl/tissue_recognition/build/src/*.so /home/st_aligner/server
-	cp /github_dl/opencv-3.2.0/build/lib/libopencv_core.so.3.2 /home/st_aligner/server
-	cp /github_dl/opencv-3.2.0/build/lib/libopencv_imgproc.so.3.2 /home/st_aligner/server
-	mkdir -p /home/st_aligner/server/logs
-	ln -s /home/st_aligner/client /home/st_aligner/server/client
+	cp -R /github_dl/st_spot_detector/server /home/st_spot_detector/server
+	cp -R /github_dl/st_spot_detector/client /home/st_spot_detector/client
+	mv /home/st_spot_detector/server/utils.py /home/st_spot_detector/server/utility.py
+	cp -R /github_dl/st_tissue_recognition/python-module/st_tissue_recognition/*.py /home/st_spot_detector/server
+	cp /github_dl/st_tissue_recognition/build/src/*.so /home/st_spot_detector/server
+	cp /github_dl/opencv-3.2.0/build/lib/libopencv_core.so.3.2 /home/st_spot_detector/server
+	cp /github_dl/opencv-3.2.0/build/lib/libopencv_imgproc.so.3.2 /home/st_spot_detector/server
+	mkdir -p /home/st_spot_detector/server/logs
+	ln -s /home/st_spot_detector/client /home/st_spot_detector/server/client
 		
 	#----------------------------
 	#Edit scripts to work locally
 	#----------------------------
 	
-	chmod -R 0777 /home/st_aligner/
-	cd /home/st_aligner/server
+	chmod -R 0777 /home/st_spot_detector/
+	cd /home/st_spot_detector/server
 	sed -i 's/utils/utility/g' server.py
 	sed -i 's@../client/devel@client/devel@g' server.py
 	sed -i 's/from . import utils/import utils/' tissue_recognition.py
 	sed -i '9,11d' tissue_recognition.py
-	sed -i 's@LIB_FILE@"/home/st_aligner/server/libtissue-recognition.so"@' tissue_recognition.py
+	sed -i 's@LIB_FILE@"/home/st_spot_detector/server/libtissue-recognition.so"@' tissue_recognition.py
 
 	#--------
 	#Clean up
@@ -157,5 +157,5 @@ Version 1.0
 %runscript
 
 	echo "Starting uwsgi webserver..."
-	cd /home/st_aligner
+	cd /home/st_spot_detector
 	uwsgi server/uwsgi-server-config.ini
