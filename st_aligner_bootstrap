@@ -97,7 +97,7 @@ Version 1.0
 	python setup.py install
 	
 	#------------------
-	#Install st aligner
+	#Install st spot detector
 	#------------------
 
 	echo "Installing st_spot_detector"
@@ -128,7 +128,7 @@ Version 1.0
 	cp -R /github_dl/st_spot_detector/server /home/st_spot_detector/server
 	cp -R /github_dl/st_spot_detector/client /home/st_spot_detector/client
 	mv /home/st_spot_detector/server/utils.py /home/st_spot_detector/server/utility.py
-	cp -R /github_dl/st_tissue_recognition/python-module/st_tissue_recognition/*.py /home/st_spot_detector/server
+	cp -R /github_dl/st_tissue_recognition/python-module/tissue_recognition/*.py /home/st_spot_detector/server
 	cp /github_dl/st_tissue_recognition/build/src/*.so /home/st_spot_detector/server
 	cp /github_dl/opencv-3.2.0/build/lib/libopencv_core.so.3.2 /home/st_spot_detector/server
 	cp /github_dl/opencv-3.2.0/build/lib/libopencv_imgproc.so.3.2 /home/st_spot_detector/server
