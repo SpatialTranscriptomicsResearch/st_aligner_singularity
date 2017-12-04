@@ -1,6 +1,7 @@
 # A Singularity container for the ST Spot Detector WebApp
 
-This document details how to get set up and running with the ST aligner WebApp inside a singularity container.
+This document details how to get set up and running with the [ST Spot Detector](https://github.com/SpatialTranscriptomicsResearch/st_spot_detector) inside a singularity container.
+
 Singularity can be found here: http://singularity.lbl.gov/
 
 To install Singularity, follow the instructions on the following webpage relevant to your operating system:
