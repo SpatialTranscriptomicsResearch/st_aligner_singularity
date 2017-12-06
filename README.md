@@ -59,9 +59,14 @@ If you are running the container outside a virtual machine, you should be able t
 - localhost:8080
 
 If you are running the container inside a virtual machine then a few additional steps are necessary.
-The following uses vagrant VM as an example.
 
-Edit your Vagrantfile so that the following lines are uncommented:
+First exist Vagrant 
+
+```
+exit
+```
+
+Edit your Vagrantfile so that the following lines are uncommented (The file should be wherever you started Vagrant):
 ```
 config.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: "127.0.0.1"
 config.vm.network "private_network", ip: "192.168.33.10"
@@ -71,6 +76,16 @@ config.vm.provider "virtualbox" do |vb|
 	vb.memory = "8192"
 
 end
+```
+
+Then reload Vagrant:
+```
+vagrant reload
+```
+Now enter Vagrant and reload the image:
+```
+vagrant ssh
+singularity run st_aligner.img
 ```
 
 This will allow you to connect to the webserver on the ip specified, on port 8080. Enter the following in your web browser:
