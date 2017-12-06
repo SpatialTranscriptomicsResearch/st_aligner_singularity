@@ -9,7 +9,7 @@ To install Singularity, follow the instructions on the following webpage relevan
 - Mac OSX	: http://singularity.lbl.gov/install-mac
 - Windows 	: http://singularity.lbl.gov/install-windows
 
-For Vagrant 
+Installation instructions
 
 Start Vagrant
 ```
@@ -34,10 +34,15 @@ Once Singularity has been installed, you need to create a container:
 singularity create --size 8192 st_aligner.img
 ```
 
+Now clone the repository to get the container
+```
+git clone https://github.com/SpatialTranscriptomicsResearch/st_spot_detector_singularity.git
+```
+
 Once the container has been created, it can be bootstrapped with the bootstrap recipie provided. This command needs to be run as root in order to install all the components into the container.
 
 ```
-sudo singularity bootstrap st_aligner.img st_aligner_bootstrap
+sudo singularity bootstrap st_aligner.img st_spot_detector_singularity/st_aligner_bootstrap
 ```
 
 Once the bootstrap procedure has finished (may take around 30 minutes), you are ready to run the st_aligner.
