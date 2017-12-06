@@ -9,7 +9,14 @@ To install Singularity, follow the instructions on the following webpage relevan
 - Mac OSX	: http://singularity.lbl.gov/install-mac
 - Windows 	: http://singularity.lbl.gov/install-windows
 
-For Vagrant on OSX
+For Vagrant 
+
+Start Vagrant
+```
+vagrant init singularityware/singularity-2.4
+vagrant up
+vagrant ssh
+```
 
 Update apt
 ```
