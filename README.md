@@ -77,6 +77,7 @@ config.vm.provider "virtualbox" do |vb|
 
 end
 ```
+Note that you may want to increase the memory if your images are very large.
 
 Then reload Vagrant:
 ```
