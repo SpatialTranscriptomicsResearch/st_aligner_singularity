@@ -53,7 +53,7 @@ Version 1.0
 	#------------------------
 	git clone https://github.com/SpatialTranscriptomicsResearch/st_spot_detector.git
 	cd st_spot_detector
-	git checkout tags/2.0.0
+	git checkout tags/2.0.1
 	pip3 install -r server/requirements.txt
 	cd client
 	npm i graceful-fs
