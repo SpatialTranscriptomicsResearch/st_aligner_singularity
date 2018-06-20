@@ -15,6 +15,7 @@ Version 1.0
 	#----------------------
 	#Install required tools
 	#----------------------
+	apt-get -y update
 	apt-get -y install software-properties-common
 	apt-add-repository universe
 	apt-get -y update
