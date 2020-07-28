@@ -31,7 +31,7 @@ sudo apt-get install debootstrap
 Once Singularity has been installed, you need to create a container:
 
 ```
-singularity create --size 8192 st_aligner.img
+singularity create --size 16384 st_aligner.img
 ```
 
 Now clone the repository to get the container
@@ -73,7 +73,7 @@ config.vm.network "private_network", ip: "192.168.33.10"
 
 config.vm.provider "virtualbox" do |vb|
 
-	vb.memory = "8192"
+	vb.memory = "16384"
 
 end
 ```
@@ -93,4 +93,4 @@ This will allow you to connect to the webserver on the ip specified, on port 808
 
 - 192.168.33.10:8080
 
-The ST Spot Detector requires around 8GB of RAM. Less RAM is required if the images are reduced in size prior to aligning them. If you get the message "An error has occurred" while uploading images it is likely that the web server has run out of RAM. Either resize the input images, or allocate more RAM to your virtual machine (or both).
+The ST Spot Detector requires around 16GB of RAM. Less RAM is required if the images are reduced in size prior to aligning them. If you get the message "An error has occurred" while uploading images it is likely that the web server has run out of RAM. Either resize the input images, or allocate more RAM to your virtual machine (or both).
