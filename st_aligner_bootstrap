@@ -55,6 +55,9 @@ Version 1.0
 	git clone https://github.com/SpatialTranscriptomicsResearch/st_spot_detector.git
 	cd st_spot_detector
 	git checkout release-v2.1.0
+	pip3 install --upgrade pip
+	pip3 install joblib
+	pip3 install scikit-build
 	pip3 install -r server/requirements.txt
 	cd client
 	npm i graceful-fs
